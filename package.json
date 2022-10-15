@@ -1,11 +1,11 @@
 {
-  "name": "project-mgmt-app",
+  "name": "Homeownerapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,15 @@
     "mongoose": "^6.3.5"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
-    "nodemon": "^2.0.16"
-  }
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/momo427/Homeownerapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/momo427/Homeownerapp/issues"
+  },
+  "homepage": "https://github.com/momo427/Homeownerapp#readme"
 }
