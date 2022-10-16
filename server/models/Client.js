@@ -1,31 +1,34 @@
 const mongoose = require('mongoose');
 
 const ClientSchema = new mongoose.Schema({
-    grossMonthlyIncome: {
+    ID: {
+        type: Number
+    },
+    GrossMonthlyIncome: {
         type: Number,
     },
-    creditCardPayment: {
+    CreditCardPayment: {
         type: Number,
     },
-    carPayment: {
+    CarPayment: {
         type: Number,
     },
-    studentLoanPayments: {
+    StudentLoanPayments: {
         type: Number,
     },
-    appraisedValue: {
+    AppraisedValue: {
         type: Number,
     },
-    downPayment: {
+    DownPayment: {
         type: Number,
     },
-    loanPayment: {
+    LoanAmount: {
         type: Number,
     },
-    monthlyMortgagePayment: {
+    MonthlyMortgagePayment: {
         type: Number,
     },
-    creditScore: {
+    CreditScore: {
         type: Number,
     },
 });

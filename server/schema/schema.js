@@ -1,4 +1,4 @@
-const {clients} = require('../sampleData.js')
+// const {clients} = require('../sampleData.js')
 
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt,GraphQLFloat, GraphQLSchema, GraphQLList, GraphQLNonNull, GraphQLEnumType} = require('graphql')
 
@@ -11,16 +11,16 @@ const ClientType = new GraphQLObjectType({
     name: 'Client',
     //Query fields which returns objects
     fields: () => ({
-        id: {type: GraphQLID}, 
-        grossMonthlyIncome: {type: GraphQLFloat},
-        creditCardPayment: {type: GraphQLFloat}, 
-        carPayment: {type: GraphQLFloat},
-        studentLoanPayments: {type: GraphQLFloat},
-        appraisedValue: {type: GraphQLFloat},
-        downPayment: {type: GraphQLFloat},
-        loanPayment: {type: GraphQLFloat},
-        monthlyMortgagePayment: {type: GraphQLFloat},
-        creditScore: {type: GraphQLInt}
+        ID: {type: GraphQLID}, 
+        GrossMonthlyIncome: {type: GraphQLFloat},
+        CreditCardPayment: {type: GraphQLFloat}, 
+        CarPayment: {type: GraphQLFloat},
+        StudentLoanPayments: {type: GraphQLFloat},
+        AppraisedValue: {type: GraphQLFloat},
+        DownPayment: {type: GraphQLFloat},
+        LoanAmount: {type: GraphQLFloat},
+        MonthlyMortgagePayment: {type: GraphQLFloat},
+        CreditScore: {type: GraphQLInt}
     }),
 });
 
@@ -87,28 +87,28 @@ const mutation = new GraphQLObjectType({
       addClient: {
         type: ClientType,
         args: {
-            id: {type: GraphQLNonNull(GraphQLInt)}, 
-            grossMonthlyIncome: {type: GraphQLNonNull(GraphQLFloat)},
-            creditCardPayment: {type:GraphQLNonNull(GraphQLFloat)}, 
-            carPayment: {type: GraphQLNonNull(GraphQLFloat)},
-            studentLoanPayments: {type: GraphQLNonNull(GraphQLFloat)},
-            appraisedValue: {type: GraphQLNonNull(GraphQLFloat)},
-            downPayment: {type: GraphQLNonNull(GraphQLFloat)},
-            loanPayment: {type: GraphQLNonNull(GraphQLFloat)},
-            monthlyMortgagePayment: {type: GraphQLNonNull(GraphQLFloat)},
-            creditScore: {type: GraphQLNonNull(GraphQLInt)}
+            ID: {type: GraphQLNonNull(GraphQLInt)}, 
+            GrossMonthlyIncome: {type: GraphQLNonNull(GraphQLFloat)},
+            CreditCardPayment: {type:GraphQLNonNull(GraphQLFloat)}, 
+            CarPayment: {type: GraphQLNonNull(GraphQLFloat)},
+            StudentLoanPayments: {type: GraphQLNonNull(GraphQLFloat)},
+            AppraisedValue: {type: GraphQLNonNull(GraphQLFloat)},
+            DownPayment: {type: GraphQLNonNull(GraphQLFloat)},
+            LoanAmount: {type: GraphQLNonNull(GraphQLFloat)},
+            MonthlyMortgagePayment: {type: GraphQLNonNull(GraphQLFloat)},
+            CreditScore: {type: GraphQLNonNull(GraphQLInt)}
         },
         resolve(parent, args) {
           const client = new Client({
-            grossMonthlyIncome: args.grossMonthlyIncome,
-            creditCardPayment: args.creditCardPayment,
-            carPayment: args.carPayment,
-            studentLoanPayments: args.studentLoanPayments,
-            appraisedValue: args.appraisedValue,
-            downPayment: args.downPayment,
-            loanPayment: args.loanPayment,
-            monthlyMortgagePayment: args.monthlyMortgagePayment,
-            creditScore: args.creditScore,
+            GrossMonthlyIncome: args.grossMonthlyIncome,
+            CreditCardPayment: args.creditCardPayment,
+            CarPayment: args.carPayment,
+            StudentLoanPayments: args.studentLoanPayments,
+            AppraisedValue: args.appraisedValue,
+            DownPayment: args.downPayment,
+            LoanAmount: args.loanPayment,
+            MonthlyMortgagePayment: args.monthlyMortgagePayment,
+            CreditScore: args.creditScore,
           });
   
           return client.save();
