@@ -4,13 +4,30 @@ import { useMutation } from '@apollo/client';
 import { ADD_CLIENT } from '../mutations/clientMutations';
 import { GET_CLIENTS } from '../queries/clientQueries';
 
+//  grossMonthlyIncome: {type: GraphQLInt},
+// creditCardPayment: {type: GraphQLInt}, 
+// carPayment: {type: GraphQLInt},
+// studentLoanPayments: {type: GraphQLInt},
+// appraisedValue: {type: GraphQLInt},
+// downPayment: {type: GraphQLInt},
+// loanPayment: {type: GraphQLInt},
+// monthlyMortgagePayment: {type: GraphQLInt},
+// creditScore: {type: GraphQLInt}
+
 export default function AddClientModal() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [ID, setID] = useState('');
+  const [GrossMonthlyIncome, setGrossMonthlyIncome] = useState('');
+  const [CarPayment, setCarPayment] = useState('');
+  const [StudentLoanPayments, setStudentLoanPayments] = useState('');  
+  const [AppriasedValue, setAppraisedValue] = useState('');
+  const [DownPayment, setDownPayment] = useState('');
+  const [LoanAmount, setLoanAmount] = useState('');
+  const [MonthlyMortgagePayment, setMonthlyMortgagePayment] = useState('');
+  const [CreditScore, setCreditScore] = useState('');
+
 
   const [addClient] = useMutation(ADD_CLIENT, {
-    variables: { name, email, phone },
+    variables: { ID, GrossMonthlyIncome, CarPayment, StudentLoanPayments, AppriasedValue, DownPayment, LoanAmount, MonthlyMortgagePayment, CreditScore},
     update(cache, { data: { addClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
 
@@ -24,15 +41,21 @@ export default function AddClientModal() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (name === '' || email === '' || phone === '') {
+    if (ID === '' || GrossMonthlyIncome === '' || CarPayment === '') {
       return alert('Please fill in all fields');
     }
 
-    addClient(name, email, phone);
+    addClient( ID, GrossMonthlyIncome, CarPayment, StudentLoanPayments, AppriasedValue, DownPayment, LoanAmount, MonthlyMortgagePayment, CreditScore);
 
-    setName('');
-    setEmail('');
-    setPhone('');
+    setID('');
+    setGrossMonthlyIncome('');
+    setCarPayment('');
+    setStudentLoanPayments('');
+    setAppraisedValue('');
+    setDownPayment('');
+    setLoanAmount('');
+    setMonthlyMortgagePayment('');
+    setCreditScore('');
   };
 
   return (
@@ -71,33 +94,93 @@ export default function AddClientModal() {
             <div className='modal-body'>
               <form onSubmit={onSubmit}>
                 <div className='mb-3'>
-                  <label className='form-label'>Name</label>
+                  <label className='form-label'>ID</label>
                   <input
                     type='text'
                     className='form-control'
-                    id='name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    id='ID'
+                    value={ID}
+                    onChange={(e) => setID(e.target.value)}
                   />
                 </div>
                 <div className='mb-3'>
-                  <label className='form-label'>Email</label>
+                  <label className='form-label'>Gross Monthly Income</label>
                   <input
                     type='email'
                     className='form-control'
-                    id='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    id='grossMonthlyIncome'
+                    value={GrossMonthlyIncome}
+                    onChange={(e) => setGrossMonthlyIncome(e.target.value)}
                   />
                 </div>
                 <div className='mb-3'>
-                  <label className='form-label'>Phone</label>
+                  <label className='form-label'>Car Payment</label>
                   <input
                     type='text'
                     className='form-control'
-                    id='phone'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    id='carpayment'
+                    value={CarPayment}
+                    onChange={(e) => setCarPayment(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Student Loan Payment</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='studentloanpayment'
+                    value={StudentLoanPayments}
+                    onChange={(e) => setStudentLoanPayments(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Appraised Value</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='appraisedvalue'
+                    value={AppriasedValue}
+                    onChange={(e) => AppriasedValue(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Down Payment</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='downPayment'
+                    value={DownPayment}
+                    onChange={(e) => DownPayment(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Loan Amount</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='loanAmount'
+                    value={LoanAmount}
+                    onChange={(e) => LoanAmount(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Monthly Mortgage Payment</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='monthlymortgagepayment'
+                    value={MonthlyMortgagePayment}
+                    onChange={(e) => setMonthlyMortgagePayment(e.target.value)}
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label className='form-label'>Credit Score</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='creditscore'
+                    value={CreditScore}
+                    onChange={(e) => setCreditScore(e.target.value)}
                   />
                 </div>
 
